@@ -1,0 +1,16 @@
+{
+  "name": "std-ide",
+  "version": "0.0.1",
+  "description": "标准项目创建脚手架",
+  "author": "kevinInsight",
+  "license": "MIT",
+  "bin": {
+    "std-ide": "command.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.0.0",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.20"
+  }
+}
