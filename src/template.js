@@ -3,12 +3,11 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 16:29:06
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 16:56:14
+ * @LastEditTime: 2021-01-19 19:15:51
  */
 
 const download = require('download-git-repo');
 const ora = require('ora');
-const chalk = require('chalk');
 
 /**
  * 获取远程仓库模板
@@ -22,16 +21,18 @@ const downloadTemplate = (repository) => {
         interval: 80,
         frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
     };
-
-    download(`direct:${repository}`, 'test/tmp', { clone: true }, function (err) {
-        spinner.stop();
-        if (!err) {
-            // 模板获取成功
-            console.log(chalk.green('模板获取成功'));
-        } else {
-            // 模板获取失败
-            console.log(chalk.red('模板获取失败'));
-        }
+    return new Promise((resolve, reject) => {
+        download(`direct:${repository}`, 'test/tmp', { clone: true }, function (err) {
+            if (!err) {
+                // 模板获取成功
+                spinner.succeed('模板获取成功');
+                resolve();
+            } else {
+                // 模板获取失败
+                spinner.fail(`模板获取失败:${JSON.stringify(err)}`);
+                reject();
+            }
+        });
     });
 };
 

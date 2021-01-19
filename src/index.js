@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 16:47:33
+ * @LastEditTime: 2021-01-19 19:13:19
  */
 const path = require('path');
 const chalk = require('chalk');
@@ -53,13 +53,17 @@ class Creator {
             // 输出文件
             output(this).then((res) => {
                 shelljs.cd(this._setting.projectName);
-                console.log(chalk.red(`当前位置:${process.cwd()}`));
+                console.log(chalk.cyan(`当前位置:${process.cwd()}`));
                 if (shelljs.exec('git init').code !== 0) {
                     shelljs.echo('Error: git init failed.');
                     shell.exit(1);
                 }
 
-                downloadTemplate('https://github.com/a958330481/template-typescript-ide.git');
+                downloadTemplate('https://github.com/a958330481/template-typescript-ide.git').then(
+                    (res) => {
+                        console.log(chalk.yellowBright(res));
+                    }
+                );
             });
         });
     }
