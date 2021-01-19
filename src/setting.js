@@ -3,13 +3,19 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 14:13:47
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 19:26:25
+ * @LastEditTime: 2021-01-19 21:30:09
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
 
 function initSetting() {
     const prompt = [
+        {
+            type: 'input',
+            name: 'templateRemoteUrl',
+            message: '模板远程地址',
+            default: 'https://github.com/a958330481/template-typescript-ide.git'
+        },
         {
             type: 'input',
             name: 'name',

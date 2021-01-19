@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 21:21:32
+ * @LastEditTime: 2021-01-19 22:03:34
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');
@@ -14,7 +14,6 @@ const initCommand = require('./command');
 const initSetting = require('./setting');
 const downloadTemplate = require('./template');
 const updatePackageJson = require('./updatePackageJson');
-
 class Creator {
     constructor() {
         const store = memFs.create();
@@ -56,11 +55,22 @@ class Creator {
 
             // 创建目录并拉取远程仓库模板
             downloadTemplate({
-                repository: 'https://github.com/a958330481/template-typescript-ide.git',
+                repository: this._setting.templateRemoteUrl,
                 name: this._setting.name
             }).then(() => {
-                //更新package.json
+                // 更新package.json
                 updatePackageJson(this._setting);
+
+                // 添加远程分支地址
+                if (this._setting.repositoryUrl) {
+                    if (
+                        shelljs.exec(`git remote add origin ${this._setting.repositoryUrl}`)
+                            .code !== 0
+                    ) {
+                        shelljs.echo('Error: git remote add origin failed.');
+                        shell.exit(1);
+                    }
+                }
             });
         });
     }
