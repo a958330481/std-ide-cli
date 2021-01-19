@@ -1,10 +1,3 @@
-<!--
- * @Descripttion: 
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-18 21:41:21
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 10:33:46
--->
 ## standard-ide
 
 -  技术选型 `commander + inquirer + chalk`
