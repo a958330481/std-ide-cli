@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 14:52:24
+ * @LastEditTime: 2021-01-19 15:52:20
  */
 const path = require('path');
 const chalk = require('chalk');
@@ -14,6 +14,7 @@ const shelljs = require('shelljs');
 
 const initCommand = require('./command');
 const initSetting = require('./setting');
+const output = require('./output');
 
 class Creator {
     constructor() {
@@ -37,6 +38,7 @@ class Creator {
         // 初始化指令
         initCommand();
         console.log(chalk.yellow(`Follow the prompts to complete the project configuration.`));
+
         // 初始化配置参数
         initSetting().then((setting) => {
             this._setting = {
@@ -46,6 +48,11 @@ class Creator {
             console.log(chalk.green('$$$$$$$$$$ project setting $$$$$$$$$$$$'));
             console.log(this._setting);
             console.log(chalk.green('$$$$$$$$$$ project setting $$$$$$$$$$$$'));
+
+            // 输出文件
+            output(this).then((res) => {
+                shelljs.cd(this._setting.projectName);
+            });
         });
     }
 }

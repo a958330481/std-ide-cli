@@ -105,6 +105,13 @@ console.log(chalk.white.bgGreen(JSON.stringify(answers))); //打印绿色背景�
 
 -   模板文件替换，要用到工具`mem-fs`和`mem-fs-editor`。
 -   文件操作，要用到工具`shelljs`
+-   fs-extra 模拟 linux 命令操作
+    > 官方文档：https://github.com/jprichardson/node-fs-extra
+    > 中文文档参考:https://juejin.cn/post/6844903641594216455
+
+## TODO
+
+[-] 指令精确执行（现在如`std-ide-cli help` 也会进入初始化流程）
 
 ## 参考：
 
