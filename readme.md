@@ -105,9 +105,11 @@ console.log(chalk.white.bgGreen(JSON.stringify(answers))); //打印绿色背景�
 
 -   模板文件替换，要用到工具`mem-fs`和`mem-fs-editor`。
 -   文件操作，要用到工具`shelljs`
--   fs-extra 模拟 linux 命令操作
+-   fs-extra 模拟 linux 命令操作文件
     > 官方文档：https://github.com/jprichardson/node-fs-extra
     > 中文文档参考:https://juejin.cn/post/6844903641594216455
+-   download-git-repo 获取远程仓库代码
+-   ora 优雅的终端加载提示
 
 ## TODO
 
@@ -125,4 +127,7 @@ console.log(chalk.white.bgGreen(JSON.stringify(answers))); //打印绿色背景�
 
 [完整流程]https://juejin.cn/post/6844903910793019399
 
-[类似项目]https://github.com/wall-wxk/npm-package-cli
+## 类似项目
+
+-   https://github.com/wall-wxk/npm-package-cli
+-   https://juejin.cn/post/6844903607855235079

@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 15:52:20
+ * @LastEditTime: 2021-01-19 16:47:33
  */
 const path = require('path');
 const chalk = require('chalk');
@@ -15,6 +15,7 @@ const shelljs = require('shelljs');
 const initCommand = require('./command');
 const initSetting = require('./setting');
 const output = require('./output');
+const downloadTemplate = require('./template');
 
 class Creator {
     constructor() {
@@ -52,6 +53,13 @@ class Creator {
             // 输出文件
             output(this).then((res) => {
                 shelljs.cd(this._setting.projectName);
+                console.log(chalk.red(`当前位置:${process.cwd()}`));
+                if (shelljs.exec('git init').code !== 0) {
+                    shelljs.echo('Error: git init failed.');
+                    shell.exit(1);
+                }
+
+                downloadTemplate('https://github.com/a958330481/template-typescript-ide.git');
             });
         });
     }
