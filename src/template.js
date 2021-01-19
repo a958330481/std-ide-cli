@@ -3,26 +3,22 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 16:29:06
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 19:15:51
+ * @LastEditTime: 2021-01-19 20:06:15
  */
 
 const download = require('download-git-repo');
 const ora = require('ora');
+const { oraFactory } = require('./utils');
 
 /**
  * 获取远程仓库模板
  * @param {*} repository 远程仓库地址
  */
-const downloadTemplate = (repository) => {
-    const spinner = ora('正在从远程仓库获取模板...').start();
+const downloadTemplate = ({ repository, name }) => {
+    const spinner = oraFactory('正在从远程仓库获取模板...');
 
-    // windows support dots hack
-    spinner._spinner = {
-        interval: 80,
-        frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
-    };
     return new Promise((resolve, reject) => {
-        download(`direct:${repository}`, 'test/tmp', { clone: true }, function (err) {
+        download(`direct:${repository}`, name, { clone: true }, function (err) {
             if (!err) {
                 // 模板获取成功
                 spinner.succeed('模板获取成功');

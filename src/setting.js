@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 14:13:47
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 14:53:24
+ * @LastEditTime: 2021-01-19 19:26:25
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
@@ -12,7 +12,7 @@ function initSetting() {
     const prompt = [
         {
             type: 'input',
-            name: 'projectName',
+            name: 'name',
             message: 'project name',
             validate(input) {
                 if (!input) {

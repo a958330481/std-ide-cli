@@ -1,28 +1,26 @@
 /*
- * @Descripttion: 指令逻辑实现
+ * @Descripttion: cli逻辑实现
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 19:13:19
+ * @LastEditTime: 2021-01-19 21:21:32
  */
-const path = require('path');
 const chalk = require('chalk');
 const memFs = require('mem-fs');
 const memFsEditor = require('mem-fs-editor');
-const fse = require('fs-extra');
 const shelljs = require('shelljs');
 
 const initCommand = require('./command');
 const initSetting = require('./setting');
-const output = require('./output');
 const downloadTemplate = require('./template');
+const updatePackageJson = require('./updatePackageJson');
 
 class Creator {
     constructor() {
         const store = memFs.create();
         this._mfs = memFsEditor.create(store);
         this._setting = {
-            projectName: '',
+            name: '',
             version: '1.0.0',
             description: '',
             authorName: '',
@@ -46,24 +44,23 @@ class Creator {
                 ...this._setting,
                 ...setting
             };
-            console.log(chalk.green('$$$$$$$$$$ project setting $$$$$$$$$$$$'));
+            console.log(chalk.green('######## project setting ########'));
             console.log(this._setting);
-            console.log(chalk.green('$$$$$$$$$$ project setting $$$$$$$$$$$$'));
+            console.log(chalk.green('######## project setting ########'));
 
-            // 输出文件
-            output(this).then((res) => {
-                shelljs.cd(this._setting.projectName);
-                console.log(chalk.cyan(`当前位置:${process.cwd()}`));
-                if (shelljs.exec('git init').code !== 0) {
-                    shelljs.echo('Error: git init failed.');
-                    shell.exit(1);
-                }
+            // git 初始化
+            if (shelljs.exec('git init').code !== 0) {
+                shelljs.echo('Error: git init failed.');
+                shell.exit(1);
+            }
 
-                downloadTemplate('https://github.com/a958330481/template-typescript-ide.git').then(
-                    (res) => {
-                        console.log(chalk.yellowBright(res));
-                    }
-                );
+            // 创建目录并拉取远程仓库模板
+            downloadTemplate({
+                repository: 'https://github.com/a958330481/template-typescript-ide.git',
+                name: this._setting.name
+            }).then(() => {
+                //更新package.json
+                updatePackageJson(this._setting);
             });
         });
     }
