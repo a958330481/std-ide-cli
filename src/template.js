@@ -1,11 +1,10 @@
 /*
- * @Descripttion: 获取远程仓库模板
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-19 16:29:06
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 09:54:31
+ * @Descripttion:获取远程仓库模板
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:31:39
  */
-
 const download = require('download-git-repo');
 const { oraFactory } = require('./utils');
 

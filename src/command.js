@@ -1,11 +1,10 @@
 /*
- * @Descripttion: 指令
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-19 11:10:34
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 15:08:30
+ * @Descripttion: 指令逻辑实现
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:30:52
  */
-
 const commander = require('commander');
 const chalk = require('chalk');
 

@@ -1,9 +1,9 @@
 /*
- * @Descripttion: cli逻辑实现
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-19 11:04:48
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 10:28:17
+ * @Descripttion: cli 逻辑实现
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:31:06
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');

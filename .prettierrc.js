@@ -1,11 +1,10 @@
 /*
- * @Descripttion:
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-08 10:48:34
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-08 10:50:49
+ * @Descripttion:.prettier rule
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:32:52
  */
-
 module.exports = {
     printWidth: 100,
     // tab缩进大小,默认为2

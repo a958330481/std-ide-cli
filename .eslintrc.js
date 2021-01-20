@@ -1,9 +1,9 @@
 /*
- * @Descripttion:
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-08 10:31:08
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 10:09:40
+ * @Descripttion:eslint rule
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:32:24
  */
 module.exports = {
     // 为我们提供运行环境，一个环境定义了一组预定义的全局变量

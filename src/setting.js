@@ -1,9 +1,9 @@
 /*
- * @Descripttion: 初始化配置项
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-19 14:13:47
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 21:30:09
+ * @Descripttion:初始化配置项
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:31:25
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');

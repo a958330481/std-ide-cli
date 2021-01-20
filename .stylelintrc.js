@@ -1,9 +1,9 @@
 /*
- * @Descripttion:
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-14 19:22:51
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-14 19:23:19
+ * @Descripttion:stylelint rule
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:35:37
  */
 module.exports = {
     plugins: ['stylelint-prettier'],

@@ -1,14 +1,133 @@
 ## standard-ide
 
--   技术选型 `commander + inquirer + chalk`
+> 一键快速创建项目、并根据指定模板对项目进行初始化
 
-## 步骤
+## 主要功能
+
+[+] 全局安装后，可在任意目录通过`std or std-ide-cli ` 指令创建项目;
+
+[+] 通过使用`inquirer`、`chalk`、`ora`等工具，让项目创建过程支持命令行界面及简单的交互
+
+[+] 拉取远程模板`IDE`代码到指定目录，并把用户自定义参数更新到`packge.json`
+
+[+] 如果用户有指定`repositoryUrl`,也会自动执行`add origin`操作
+
+## 使用
+
+> npm 地址 : https://www.npmjs.com/package/std-ide-cli
+
+> 全局安装 `std-ide-cli`
+
+```bash
+npm i std-ide-cli -g
+```
+
+> 创建项目
+
+-   输入以下指令，即可启动创建流程
+
+```bash
+std
+```
+
+或
+
+```bash
+std-ide-cli
+```
+
+## 参数说明
+
+> 项目初始化构建参数
+
+-   `templateRemoteUrl`
+
+    name: 模板远程仓库地址
+
+    默认: `ssh://git@git-cc.nie.netease.com:32200/weblib/webcc-module-template.git`
+
+    支持输入更新其他模板地址
+
+    非必填
+
+-   `name`
+
+    name: 项目名称
+
+    `必填`
+
+-   `version`
+
+    name: 版本号
+
+    默认:`1.0.0`
+
+    非必填
+
+-   `description`
+
+    name: 项目描述
+
+    非必填
+
+-   `authorName`
+
+    name: 作者名称
+
+    非必填
+
+-   `authorEmail`
+
+    name: 作者邮箱
+
+    非必填
+
+-   `license`
+
+    name： 软件许可协议
+
+    默认值: `ISC`
+
+    非必填
+
+-   `repositoryType`
+
+    name: 代码提交工具类型
+
+    默认值：`git`
+
+    非必填
+
+-   `repositoryUrl` (推荐使用 ssh 格式)
+
+    name: 新项目远程仓库地址
+
+    非必填
+
+    > 如果设置了 repositoryUrl,则`cli` 会在项目创建后自动执行 <br/> `git remote add origin ${repositoryUrl} `
+
+## 注意事项
+
+-   ### templateRemoteUrl 使用的`ssh`格式,创建的时候报如下错误
+
+```bash
+git@git-cc.nie.netease.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+```
+
+可通过以下方式处理：
+
+1、参考[git clone 记住密码](https://g.126.fm/02DWtg0)，或者生成私钥的时候不要设置密码，参考[重置 SSH 私钥密码](https://woodenrobot.me/2018/01/30/取消-SSH-私钥密码/)
+
+2、templateRemoteUrl 改用 http url
+
+## 开发备忘
 
 -   在`package.json` 中添加`bin`字段；它可以用来存放一个可执行的文件，配置如下：
 
 ```json
 "bin":{
-    "std-ide":"command.js"
+    "std-ide":"bin/cli"
 }
 ```
 
@@ -117,17 +236,14 @@ console.log(chalk.white.bgGreen(JSON.stringify(answers))); //打印绿色背景�
 
 ## 参考：
 
-[跟着老司机玩转 Node 命令行]https://aotu.io/notes/2016/08/09/command-line-development/index.html
+[1]https://aotu.io/notes/2016/08/09/command-line-development/index.html
 
-[简单案例]https://cloud.tencent.com/developer/article/1341983
+[2]https://cloud.tencent.com/developer/article/1341983
 
-[commander]https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md
+[3]https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md
 
-[shell]https://www.cnblogs.com/cangqinglang/p/10642891.html
+[4]https://www.cnblogs.com/cangqinglang/p/10642891.html
 
-[完整流程]https://juejin.cn/post/6844903910793019399
+[5]https://www.cnblogs.com/cangqinglang/p/10642891.html
 
-## 类似项目
-
--   https://github.com/wall-wxk/npm-package-cli
--   https://juejin.cn/post/6844903607855235079
+[6]https://juejin.cn/post/6844903607855235079

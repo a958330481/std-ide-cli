@@ -1,11 +1,10 @@
 /*
  * @Descripttion: 更新package.json文件
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-19 17:18:17
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 10:26:54
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:31:50
  */
-
 const fse = require('fs-extra');
 const chalk = require('chalk');
 const { oraFactory } = require('./utils');

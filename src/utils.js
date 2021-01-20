@@ -1,9 +1,9 @@
 /*
  * @Descripttion:工具函数
- * @Author: zhangkai14@corp.netease.com
- * @Date: 2021-01-19 19:32:01
- * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 10:04:13
+ * @Author: kevininsight@126.com
+ * @Date: 2021-01-20 20:21:31
+ * @LastEditors: kevininsight@126.com
+ * @LastEditTime: 2021-01-20 20:32:04
  */
 const ora = require('ora');
 const shelljs = require('shelljs');

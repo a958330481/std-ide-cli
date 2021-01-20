@@ -8,6 +8,7 @@
     },
     "license": "MIT",
     "bin": {
+        "std": "bin/cli",
         "std-ide-cli": "bin/cli"
     },
     "dependencies": {
