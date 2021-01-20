@@ -1,4 +1,4 @@
-## standard-ide
+## std-ide-cli
 
 > 一键快速创建项目、并根据指定模板对项目进行初始化
 
@@ -233,17 +233,18 @@ console.log(chalk.white.bgGreen(JSON.stringify(answers))); //打印绿色背景�
 ## TODO
 
 [-] 指令精确执行（现在如`std-ide-cli help` 也会进入初始化流程）
+[-] 支持 ssh
 
 ## 参考：
 
-[1]https://aotu.io/notes/2016/08/09/command-line-development/index.html
+[1] https://aotu.io/notes/2016/08/09/command-line-development/index.html
 
-[2]https://cloud.tencent.com/developer/article/1341983
+[2] https://cloud.tencent.com/developer/article/1341983
 
-[3]https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md
+[3] https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md
 
-[4]https://www.cnblogs.com/cangqinglang/p/10642891.html
+[4] https://www.cnblogs.com/cangqinglang/p/10642891.html
 
-[5]https://www.cnblogs.com/cangqinglang/p/10642891.html
+[5] https://www.cnblogs.com/cangqinglang/p/10642891.html
 
-[6]https://juejin.cn/post/6844903607855235079
+[6] https://juejin.cn/post/6844903607855235079

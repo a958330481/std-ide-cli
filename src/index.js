@@ -1,9 +1,9 @@
 /*
- * @Descripttion: cli 逻辑实现
+ * @Descripttion: cli logic
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 20:31:06
+ * @LastEditTime: 2021-01-20 21:03:57
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');
@@ -25,22 +25,22 @@ class Creator {
             name: '',
             version: '1.0.0',
             description: '',
-            authorName: '',
-            authorEmail: '',
+            author: '',
             license: '',
             repositoryType: '',
-            repositoryUrl: ''
+            repositoryUrl: '',
+            templateRemoteUrl: ''
         };
     }
     create() {
         console.log(
             chalk.green.bold(`${chalk.blue('♫ ♫♬♪♫ ')}std-ide-cli${chalk.blue(' ♫ ♫♬♪♫ ')}`)
         );
-        // 初始化指令
+        // init command
         initCommand();
         console.log(chalk.yellow(`Follow the prompts to complete the project configuration.`));
 
-        // 初始化配置参数
+        // init setting
         initSetting().then((setting) => {
             this._setting = {
                 ...this._setting,
@@ -51,23 +51,23 @@ class Creator {
             console.log(chalk.green('######## project setting ########'));
             console.log('');
 
-            // git 初始化
-            gitInit('当前工作目录');
+            // git init
+            gitInit('current workspace');
 
-            // 创建目录并拉取远程仓库模板
+            // create dir and pull remote template
             downloadTemplate({
                 repository: this._setting.templateRemoteUrl,
                 name: this._setting.name
             }).then(() => {
-                // 更新package.json
+                // update package.json
                 updatePackageJson(this._setting);
 
-                // 添加远程分支地址
+                // add origin
                 if (this._setting.repositoryUrl) {
                     fse.removeSync(`${pwd}/.git`);
                     shelljs.cd(this._setting.name);
-                    // git 初始化
-                    gitInit('新建项目工作目录');
+                    // git init
+                    gitInit('new work dir');
                     if (
                         shelljs.exec(`git remote add origin ${this._setting.repositoryUrl}`)
                             .code !== 0
@@ -77,7 +77,7 @@ class Creator {
                     }
                     console.log('');
                     console.log(
-                        chalk.green(`git remote add origin ${this._setting.repositoryUrl} 成功`)
+                        chalk.green(`git remote add origin ${this._setting.repositoryUrl} success`)
                     );
                 }
 
@@ -85,7 +85,11 @@ class Creator {
                 console.log('');
                 console.log(
                     chalk.green.bold(
-                        `${chalk.blue('♫ ♫♬♪♫ ')}恭喜，项目已经创建成功${chalk.blue(' ♫ ♫♬♪♫ ')}`
+                        `${chalk.blue(
+                            '♫ ♫♬♪♫ '
+                        )}Congratulations, the new project has been created successfully! ${chalk.blue(
+                            ' ♫ ♫♬♪♫ '
+                        )}`
                     )
                 );
                 console.log('');

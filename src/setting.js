@@ -1,9 +1,9 @@
 /*
- * @Descripttion:初始化配置项
+ * @Descripttion:init setting
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 20:31:25
+ * @LastEditTime: 2021-01-20 21:04:09
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
@@ -13,8 +13,8 @@ function initSetting() {
         {
             type: 'input',
             name: 'templateRemoteUrl',
-            message: '模板远程地址',
-            default: 'https://github.com/a958330481/template-typescript-ide.git'
+            message: 'template remote url',
+            default: 'https://github.com/reactide/reactide.git'
         },
         {
             type: 'input',
@@ -43,20 +43,15 @@ function initSetting() {
         },
         {
             type: 'input',
-            name: 'authorName',
-            message: 'author name'
-        },
-        {
-            type: 'input',
-            name: 'authorEmail',
-            message: 'author email'
+            name: 'author',
+            message: 'author'
         },
         {
             type: 'list',
             name: 'license',
-            message: 'license(default:ISC)',
-            choices: ['ISC', 'BSD', 'MIT'],
-            default: 'ISC'
+            message: 'license(default:MIT)',
+            choices: ['MIT', 'BSD', 'ISC', 'other'],
+            default: 'MIT'
         },
         {
             type: 'input',
