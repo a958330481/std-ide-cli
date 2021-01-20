@@ -1,6 +1,6 @@
 {
     "name": "std-ide-cli",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "标准项目创建脚手架",
     "author": {
         "name": "kevinInsight",
@@ -8,7 +8,7 @@
     },
     "license": "MIT",
     "bin": {
-        "std1": "bin/cli",
+        "std": "bin/cli",
         "std-ide-cli": "bin/cli"
     },
     "dependencies": {
