@@ -3,11 +3,10 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 16:29:06
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 20:06:15
+ * @LastEditTime: 2021-01-20 09:54:31
  */
 
 const download = require('download-git-repo');
-const ora = require('ora');
 const { oraFactory } = require('./utils');
 
 /**

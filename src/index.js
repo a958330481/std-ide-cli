@@ -3,17 +3,20 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-19 22:03:34
+ * @LastEditTime: 2021-01-20 10:03:18
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');
 const memFsEditor = require('mem-fs-editor');
 const shelljs = require('shelljs');
+const fse = require('fs-extra');
+const pwd = process.cwd();
 
 const initCommand = require('./command');
 const initSetting = require('./setting');
 const downloadTemplate = require('./template');
 const updatePackageJson = require('./updatePackageJson');
+const { gitInit } = require('./utils');
 class Creator {
     constructor() {
         const store = memFs.create();
@@ -48,10 +51,7 @@ class Creator {
             console.log(chalk.green('######## project setting ########'));
 
             // git 初始化
-            if (shelljs.exec('git init').code !== 0) {
-                shelljs.echo('Error: git init failed.');
-                shell.exit(1);
-            }
+            gitInit('当前工作目录');
 
             // 创建目录并拉取远程仓库模板
             downloadTemplate({
@@ -63,6 +63,10 @@ class Creator {
 
                 // 添加远程分支地址
                 if (this._setting.repositoryUrl) {
+                    fse.removeSync(`${pwd}/.git`);
+                    shelljs.cd(this._setting.name);
+                    // git 初始化
+                    gitInit('新建项目工作目录');
                     if (
                         shelljs.exec(`git remote add origin ${this._setting.repositoryUrl}`)
                             .code !== 0
