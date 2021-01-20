@@ -233,7 +233,9 @@ console.log(chalk.white.bgGreen(JSON.stringify(answers))); //打印绿色背景�
 ## TODO
 
 [-] 指令精确执行（现在如`std-ide-cli help` 也会进入初始化流程）
+
 [-] 支持 ssh
+
 [-] 支持 ts
 
 ## 参考：
