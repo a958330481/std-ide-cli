@@ -1,6 +1,6 @@
 {
     "name": "std-ide-cli",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "标准项目创建脚手架",
     "author": {
         "name": "kevinInsight",
