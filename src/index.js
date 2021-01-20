@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 11:04:48
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 10:03:18
+ * @LastEditTime: 2021-01-20 10:28:17
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');
@@ -49,6 +49,7 @@ class Creator {
             console.log(chalk.green('######## project setting ########'));
             console.log(this._setting);
             console.log(chalk.green('######## project setting ########'));
+            console.log('');
 
             // git 初始化
             gitInit('当前工作目录');
@@ -74,7 +75,26 @@ class Creator {
                         shelljs.echo('Error: git remote add origin failed.');
                         shell.exit(1);
                     }
+                    console.log('');
+                    console.log(
+                        chalk.green(`git remote add origin ${this._setting.repositoryUrl} 成功`)
+                    );
                 }
+
+                console.log('');
+                console.log('');
+                console.log(
+                    chalk.green.bold(
+                        `${chalk.blue('♫ ♫♬♪♫ ')}恭喜，项目已经创建成功${chalk.blue(' ♫ ♫♬♪♫ ')}`
+                    )
+                );
+                console.log('');
+                console.log(chalk.white('We suggest that you begin by typing:'));
+                console.log('');
+                console.log(chalk.cyan(`cd ${this._setting.name}`));
+                console.log(chalk.cyan(`yarn`));
+                console.log('');
+                console.log('');
             });
         });
     }

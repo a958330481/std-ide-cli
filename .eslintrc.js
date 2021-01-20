@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-08 10:31:08
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-08 21:50:40
+ * @LastEditTime: 2021-01-20 10:09:40
  */
 module.exports = {
     // 为我们提供运行环境，一个环境定义了一组预定义的全局变量
@@ -63,7 +63,6 @@ module.exports = {
         ],
         'no-useless-escape': 2,
         'no-alert': 2,
-        'no-console': 2,
         'react/react-in-jsx-scope': 'off',
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
         'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则

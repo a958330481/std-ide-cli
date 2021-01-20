@@ -3,7 +3,7 @@
  * @Author: zhangkai14@corp.netease.com
  * @Date: 2021-01-19 17:18:17
  * @LastEditors: zhangkai14@corp.netease.com
- * @LastEditTime: 2021-01-20 10:00:04
+ * @LastEditTime: 2021-01-20 10:26:54
  */
 
 const fse = require('fs-extra');
@@ -25,8 +25,10 @@ const updatePackageJson = (setting) => {
         console.log(newPackageJson);
         console.log(chalk.green('######## new package.json ########'));
         fse.writeJsonSync(`${pwd}/${setting.name}/package.json`, newPackageJson, { spaces: 2 });
+        console.log('');
         spinner.succeed('package.json 更新成功');
     } catch (err) {
+        console.log('');
         spinner.fail(`package.json 更新失败:${JSON.stringify(err)}`);
     }
 };
