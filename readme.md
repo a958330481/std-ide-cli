@@ -44,7 +44,7 @@ std-ide-cli
 
     name: 模板远程仓库地址
 
-    默认: `ssh://git@git-cc.nie.netease.com:32200/weblib/webcc-module-template.git`
+    默认: `ssh://git@git-xxxx:32200/weblib/xxxx.git`
 
     支持输入更新其他模板地址
 
