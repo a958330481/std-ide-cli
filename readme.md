@@ -106,7 +106,35 @@ std-ide-cli
 
     > 如果设置了 repositoryUrl,则`cli` 会在项目创建后自动执行 <br/> `git remote add origin ${repositoryUrl} `
 
-## 注意事项
+## 常见问题
+
+-   ### 系统中禁止执行脚本解决方法
+
+如果安装了 cli 之后，执行`std`的时候报类似如下错误：
+
+```info
+无法加载文件 ******.ps1，因为在此系统中禁止执行脚本。有关详细信息，请参阅 "get-help about_signing"。
+所在位置 行:1 字符: 17
++ E:\Test\test.ps1 <<<<
+    + CategoryInfo          : NotSpecified: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : RuntimeException
+```
+
+这是因为:
+
+当前 Windows PowerShell 执行策略很可能是 Restricted（默认设置）
+
+查看当前策略：
+
+```bash
+ get-executionpolicy
+```
+
+怎么解决？执行如下指令
+
+```
+   set-executionpolicy remotesigned
+```
 
 -   ### templateRemoteUrl 使用的`ssh`格式,创建的时候报如下错误
 
