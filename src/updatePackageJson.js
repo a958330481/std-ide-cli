@@ -3,7 +3,7 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 21:00:26
+ * @LastEditTime: 2021-01-21 18:02:48
  */
 const fse = require('fs-extra');
 const chalk = require('chalk');
@@ -20,6 +20,8 @@ const updatePackageJson = (setting) => {
             ...packageObj,
             ...setting
         };
+        console.log('');
+        console.log('');
         console.log(chalk.green('######## new package.json ########'));
         console.log(newPackageJson);
         console.log(chalk.green('######## new package.json ########'));

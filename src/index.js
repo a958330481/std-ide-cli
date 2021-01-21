@@ -3,7 +3,7 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 21:03:57
+ * @LastEditTime: 2021-01-21 19:09:29
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');
@@ -12,7 +12,7 @@ const shelljs = require('shelljs');
 const fse = require('fs-extra');
 const pwd = process.cwd();
 
-const initCommand = require('./command');
+const initCMD = require('./command');
 const initSetting = require('./setting');
 const downloadTemplate = require('./template');
 const updatePackageJson = require('./updatePackageJson');
@@ -37,7 +37,7 @@ class Creator {
             chalk.green.bold(`${chalk.blue('♫ ♫♬♪♫ ')}std-ide-cli${chalk.blue(' ♫ ♫♬♪♫ ')}`)
         );
         // init command
-        initCommand();
+        initCMD();
         console.log(chalk.yellow(`Follow the prompts to complete the project configuration.`));
 
         // init setting
@@ -46,6 +46,7 @@ class Creator {
                 ...this._setting,
                 ...setting
             };
+            console.log('');
             console.log(chalk.green('######## project setting ########'));
             console.log(this._setting);
             console.log(chalk.green('######## project setting ########'));

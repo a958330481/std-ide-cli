@@ -3,7 +3,7 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 21:04:09
+ * @LastEditTime: 2021-01-21 18:00:13
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
@@ -14,7 +14,13 @@ function initSetting() {
             type: 'input',
             name: 'templateRemoteUrl',
             message: 'template remote url',
-            default: 'https://github.com/reactide/reactide.git'
+            default: 'https://github.com/reactide/reactide.git',
+            validate(input) {
+                if (!input) {
+                    return 'templat remote url is required.';
+                }
+                return true;
+            }
         },
         {
             type: 'input',
