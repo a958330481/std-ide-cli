@@ -3,10 +3,11 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 21:06:00
+ * @LastEditTime: 2021-01-22 20:33:29
  */
 const download = require('download-git-repo');
-const { oraFactory } = require('./utils');
+const chalk = require('chalk');
+const { oraFactory, log } = require('./utils');
 
 /**
  * pull remote template
@@ -14,8 +15,8 @@ const { oraFactory } = require('./utils');
  */
 const downloadTemplate = ({ repository, name }) => {
     if (!repository) {
-        console.log('');
-        console.log(chalk.red('Lack of valid project template address, creation failed'));
+        log('');
+        log(chalk.red('Lack of valid project template address, creation failed'));
         return;
     }
     const spinner = oraFactory('Getting templates from remote warehouse...');
@@ -26,7 +27,7 @@ const downloadTemplate = ({ repository, name }) => {
                 spinner.succeed('The template is successfully obtained');
                 resolve();
             } else {
-                spinner.fail(`Failed to get template:${JSON.stringify(err)}`);
+                spinner.fail(`Failed to get template,For more help please see reame.md`);
                 reject();
             }
         });

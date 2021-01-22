@@ -3,7 +3,7 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-21 18:00:13
+ * @LastEditTime: 2021-01-22 20:31:43
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
@@ -12,12 +12,15 @@ function initSetting() {
     const prompt = [
         {
             type: 'input',
-            name: 'templateRemoteUrl',
-            message: 'template remote url',
+            name: 'templateRepositoryUrl',
+            message: 'template repository url',
             default: 'https://github.com/reactide/reactide.git',
             validate(input) {
                 if (!input) {
-                    return 'templat remote url is required.';
+                    return 'the template repository url is required.';
+                }
+                if (!input.includes('http') && !input.includes('https') && !input.includes('ssh')) {
+                    return 'Please enter the correct repository url.';
                 }
                 return true;
             }

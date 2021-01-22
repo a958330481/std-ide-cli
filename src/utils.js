@@ -3,10 +3,10 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-20 21:06:24
+ * @LastEditTime: 2021-01-22 20:16:42
  */
 const ora = require('ora');
-const shelljs = require('shelljs');
+const shell = require('shelljs');
 
 const oraFactory = (tips) => {
     const spinner = ora(tips).start();
@@ -21,13 +21,17 @@ const oraFactory = (tips) => {
 };
 
 const gitInit = (description) => {
-    if (shelljs.exec('git init').code !== 0) {
-        shelljs.echo(`Error: ${description} git init failed.`);
+    if (shell.exec('git init').code !== 0) {
+        shell.echo(`Error: ${description} git init failed.`);
         shell.exit(1);
     }
 };
 
+const log = console.log;
+
 module.exports = {
     oraFactory,
-    gitInit
+    gitInit,
+    shell,
+    log
 };

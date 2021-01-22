@@ -139,7 +139,7 @@ std-ide-cli
 -   ### templateRemoteUrl 使用的`ssh`格式,创建的时候报如下错误
 
 ```bash
-git@git-cc.nie.netease.com: Permission denied (publickey).
+git@git.xxxx.com: Permission denied (publickey).
 fatal: Could not read from remote repository.
 ```
 

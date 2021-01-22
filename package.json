@@ -1,7 +1,8 @@
 {
     "name": "std-ide-cli",
-    "version": "1.0.5",
-    "description": "标准项目创建脚手架",
+    "version": "1.0.6",
+    "description": "一键快速创建项目、并根据指定模板对项目进行初始化CLI工具",
+    "homepage": "https://github.com/a958330481/std-ide-cli",
     "author": {
         "name": "kevinInsight",
         "email": "kevininsight@126.com"
@@ -10,6 +11,24 @@
     "bin": {
         "std": "bin/cli",
         "std-ide-cli": "bin/cli"
+    },
+    "keywords": [
+        "cli",
+        "command line",
+        "opts",
+        "parseopt",
+        "opt",
+        "args",
+        "console",
+        "argsparse",
+        "optparse",
+        "autocomplete",
+        "command",
+        "autocompletion"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/a958330481/std-ide-cli.git"
     },
     "dependencies": {
         "chalk": "^4.1.0",

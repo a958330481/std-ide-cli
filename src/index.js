@@ -3,12 +3,11 @@
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
  * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-21 19:09:29
+ * @LastEditTime: 2021-01-22 20:35:47
  */
 const chalk = require('chalk');
 const memFs = require('mem-fs');
 const memFsEditor = require('mem-fs-editor');
-const shelljs = require('shelljs');
 const fse = require('fs-extra');
 const pwd = process.cwd();
 
@@ -16,8 +15,8 @@ const initCMD = require('./command');
 const initSetting = require('./setting');
 const downloadTemplate = require('./template');
 const updatePackageJson = require('./updatePackageJson');
-const { gitInit } = require('./utils');
-class Creator {
+const { gitInit, shell, log } = require('./utils');
+class Task {
     constructor() {
         const store = memFs.create();
         this._mfs = memFsEditor.create(store);
@@ -29,16 +28,14 @@ class Creator {
             license: '',
             repositoryType: '',
             repositoryUrl: '',
-            templateRemoteUrl: ''
+            templateRepositoryUrl: ''
         };
     }
     create() {
-        console.log(
-            chalk.green.bold(`${chalk.blue('♫ ♫♬♪♫ ')}std-ide-cli${chalk.blue(' ♫ ♫♬♪♫ ')}`)
-        );
+        log(chalk.green.bold(`${chalk.blue('♫ ♫♬♪♫ ')}std-ide-cli${chalk.blue(' ♫ ♫♬♪♫ ')}`));
         // init command
         initCMD();
-        console.log(chalk.yellow(`Follow the prompts to complete the project configuration.`));
+        log(chalk.yellow(`Follow the prompts to complete the project configuration.`));
 
         // init setting
         initSetting().then((setting) => {
@@ -46,18 +43,18 @@ class Creator {
                 ...this._setting,
                 ...setting
             };
-            console.log('');
-            console.log(chalk.green('######## project setting ########'));
-            console.log(this._setting);
-            console.log(chalk.green('######## project setting ########'));
-            console.log('');
+            log('');
+            log(chalk.green('######## project setting ########'));
+            log(this._setting);
+            log(chalk.green('######## project setting ########'));
+            log('');
 
             // git init
             gitInit('current workspace');
 
             // create dir and pull remote template
             downloadTemplate({
-                repository: this._setting.templateRemoteUrl,
+                repository: this._setting.templateRepositoryUrl,
                 name: this._setting.name
             }).then(() => {
                 // update package.json
@@ -66,25 +63,25 @@ class Creator {
                 // add origin
                 if (this._setting.repositoryUrl) {
                     fse.removeSync(`${pwd}/.git`);
-                    shelljs.cd(this._setting.name);
+                    shell.cd(this._setting.name);
                     // git init
                     gitInit('new work dir');
                     if (
-                        shelljs.exec(`git remote add origin ${this._setting.repositoryUrl}`)
-                            .code !== 0
+                        shell.exec(`git remote add origin ${this._setting.repositoryUrl}`).code !==
+                        0
                     ) {
-                        shelljs.echo('Error: git remote add origin failed.');
+                        shell.echo('Error: git remote add origin failed.');
                         shell.exit(1);
                     }
-                    console.log('');
-                    console.log(
+                    log('');
+                    log(
                         chalk.green(`git remote add origin ${this._setting.repositoryUrl} success`)
                     );
                 }
 
-                console.log('');
-                console.log('');
-                console.log(
+                log('');
+                log('');
+                log(
                     chalk.green.bold(
                         `${chalk.blue(
                             '♫ ♫♬♪♫ '
@@ -93,16 +90,16 @@ class Creator {
                         )}`
                     )
                 );
-                console.log('');
-                console.log(chalk.white('We suggest that you begin by typing:'));
-                console.log('');
-                console.log(chalk.cyan(`cd ${this._setting.name}`));
-                console.log(chalk.cyan(`yarn`));
-                console.log('');
-                console.log('');
+                log('');
+                log(chalk.white('We suggest that you begin by typing:'));
+                log('');
+                log(chalk.magenta(`cd ${this._setting.name}`));
+                log(chalk.magenta(`yarn`));
+                log('');
+                log('');
             });
         });
     }
 }
 
-module.exports = Creator;
+module.exports = Task;
