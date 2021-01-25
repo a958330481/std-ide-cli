@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-
 const Task = require('../src/index.js');
 const task = new Task();
 

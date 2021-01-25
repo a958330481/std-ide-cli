@@ -2,15 +2,17 @@
 
 > 一键快速创建项目、并根据指定模板对项目进行初始化
 
+![std.gif](./std-demo-effect.gif)
+
 ## 主要功能
 
-[+] 全局安装后，可在任意目录通过`std or std-ide-cli ` 指令创建项目;
+[+] 全局安装 cli 后，可在任意目录通过`std or std-ide-cli ` 指令创建项目;
 
-[+] 通过使用`inquirer`、`chalk`、`ora`等工具，让项目创建过程支持命令行界面及简单的交互
+[+] 通过使用`inquirer`、`chalk`、`ora`等工具，让项目创建过程拥有美观的命令行界面及友好的交互
 
-[+] 拉取远程模板`IDE`代码到指定目录，并把用户自定义参数更新到`packge.json`
+[+] 拉取远程模板`ide`代码到指定目录，并把用户自定义参数更新到`packge.json`
 
-[+] 如果用户有指定`repositoryUrl`,也会自动执行`add origin`操作
+[+] 如果创建的时候有指定`repositoryUrl`,创建完成后会自动执行`git remote add origin ${repositoryUrl}`
 
 ## 使用
 
