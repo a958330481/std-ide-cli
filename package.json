@@ -3,10 +3,7 @@
     "version": "1.0.8",
     "description": "一键快速创建项目、并根据指定模板对项目进行初始化CLI工具",
     "homepage": "https://github.com/a958330481/std-ide-cli",
-    "author": {
-        "name": "kevinInsight",
-        "email": "kevininsight@126.com"
-    },
+    "author": "kevininsight@126.com",
     "license": "MIT",
     "bin": {
         "std": "bin/cli",
