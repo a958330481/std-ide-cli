@@ -2,8 +2,8 @@
  * @Descripttion:init setting
  * @Author: kevininsight@126.com
  * @Date: 2021-01-20 20:21:31
- * @LastEditors: kevininsight@126.com
- * @LastEditTime: 2021-01-22 20:31:43
+ * @LastEditors:kevininsight@126.com
+ * @LastEditTime: 2021-03-10 09:51:04
  */
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
@@ -14,7 +14,6 @@ function initSetting() {
             type: 'input',
             name: 'templateRepositoryUrl',
             message: 'template repository url',
-            default: 'https://github.com/reactide/reactide.git',
             validate(input) {
                 if (!input) {
                     return 'the template repository url is required.';
