@@ -12,20 +12,34 @@ const pwd = process.cwd();
 
 const updatePackageJson = (setting) => {
     const spinner = oraFactory('updating package.json...');
+    const { name, description, version, author, license, repositoryType, repositoryUrl, template } =
+        setting;
     log('');
     try {
-        // read package.json data
-        const packageObj = fse.readJsonSync(`${pwd}/${setting.name}/package.json`);
+        // read package.json content
+        const packageObj = fse.readJsonSync(`${pwd}/${name}/package.json`);
         const newPackageJson = {
             ...packageObj,
-            ...setting
+            name,
+            description,
+            version,
+            author,
+            license,
+            repository: {
+                type: repositoryType,
+                url: repositoryUrl
+            },
+            template: {
+                type: 'git',
+                url: template
+            }
         };
         log('');
         log('');
         log(chalk.green('######## new package.json ########'));
         log(newPackageJson);
         log(chalk.green('######## new package.json ########'));
-        fse.writeJsonSync(`${pwd}/${setting.name}/package.json`, newPackageJson, { spaces: 2 });
+        fse.writeJsonSync(`${pwd}/${name}/package.json`, newPackageJson, { spaces: 2 });
         log('');
         spinner.succeed('package.json update success');
     } catch (err) {
