@@ -9,6 +9,9 @@
         "std": "bin/cli",
         "std-ide-cli": "bin/cli"
     },
+    "scripts": {
+        "release": "standard-version"
+    },
     "keywords": [
         "cli",
         "command line",
@@ -45,6 +48,7 @@
         "eslint-plugin-prettier": "^3.3.1",
         "lint-staged": "^10.5.3",
         "prettier": "^2.2.1",
+        "standard-version": "^9.5.0",
         "stylelint": "^13.8.0",
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-standard": "^20.0.0",
